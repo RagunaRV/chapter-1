@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            text-align: center;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px block;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid blue;
+            border-radius: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: seagreen;
+            color: papayawhip;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: blanchedalmond;
+        }
+
+        #error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup Form</h2>
+        <form id="signup-form" onsubmit="return validateForm()">
+            <input type="text" id="email" placeholder="User Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            <div id="error-message"></div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const Repeatpassword=document.getElementById('Repeatpassword').value;
+            const errorMessage = document.getElementById('error-message');
+
+            
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            
+            const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[A-Za-z0-9!@#$%^&*()_+]{8,}$/;
+
+            if (!email.match(emailRegex)) {
+                errorMessage.textContent = 'Invalid email address';
+                return false;
+            }
+
+            if (!password.match(passwordRegex)) {
+                errorMessage.textContent = 'Invalid password. Password must contain at least one uppercase letter, one special character, one number, and be at least 8 characters long.';
+                return false;
+            }
+
+
+            
+            
+        }
+    </script>
+</body>
+</html>
